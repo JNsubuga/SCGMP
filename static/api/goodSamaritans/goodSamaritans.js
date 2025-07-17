@@ -13,14 +13,7 @@ const goodSamaritans = () => {
     var url = `${hostUrl}api/en/scgmp/good-samaritans/`
     let getsGrant = $("#search-gets-grant-input").val()
     let grantNameId = $("#search-grant-name-id").val()
-    // document.getElementById("search-gets-grant-input").addEventListener('change', (e)=>{
-    //     // console.log($("#search-gets-grant-input").val(e.target.value).prop('checked', e.target.value))
-    //     console.log(getsGrant)
-    // })
-    // document.getElementById("search-grant-name-id").addEventListener('change', (e)=>{
-    //     console.log(e.target.value)
-    //     console.log(grantNameId)
-    // })
+
     $.ajax({
         "url": url,
         "method": "GET",
@@ -36,69 +29,34 @@ const goodSamaritans = () => {
         var allGoodSamaritans = [];
         for(let i=0; i < response.length; i++) {
             var goodSamaritan = response[i];
-            // document.getElementById("search-grant-name-id").addEventListener('change', (e)=>{
-                console.log(goodSamaritan.grant.id);
-                // console.log(e.target.value); 
-                if(goodSamaritan.grant.id == 1){
-                    var dateFormat = new Date(goodSamaritan.BirthDate);
-                    var nameLink = `<a href="${hostUrl}good-samaritan/${goodSamaritan.id}">${goodSamaritan.names}</a>`;
-                    var Actions = '<button type="button" onclick="goodSamaritanForm(' + goodSamaritan.id + ')" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> Edit</button>'
-                    allGoodSamaritans.push({
-                        // names: goodSamaritan.names,
-                        names: nameLink,
-                        phoneNumber: goodSamaritan.phoneNumber,
-                        BirthDate: dateFormat.toLocaleDateString("en-GB"),
-                        age: `${goodSamaritan.age} Years Old`,
-                        // placeOfResidence: goodSamaritan.placeOfResidence,
-                        // timeOfStay: goodSamaritan.timeOfStay,
-                        // hasDependants: goodSamaritan.hasDependants, 
-                        // numberOfDependants: goodSamaritan.numberOfDependants,
-                        // hasNationalID: goodSamaritan.hasNationalID,
-                        // NIN: goodSamaritan.NIN,
-                        // youthHoodBusiness: goodSamaritan.youthHoodBusiness,
-                        // getsGrant: goodSamaritan.getsGrant,
-                        // forHowLong: goodSamaritan.forHowLong,
-                        // howMuch: goodSamaritan.howMuch,
-                        // howItHelpedYou: goodSamaritan.howItHelpedYou,
-                        // BenefitsFromGoodSamaritan: goodSamaritan.BenefitsFromGoodSamaritan,
-                        // grant: goodSamaritan.grant.GrantName,
-                        // howDoYouSurvive: goodSamaritan.howDoYouSurvive,
-                        // placeOfWorship: goodSamaritan.placeOfWorship,
-                        // yourNeedFromGovtAsAGrand: goodSamaritan.yourNeedFromGovtAsAGrand,
-                        // adviseToTheYouth: goodSamaritan.adviseToTheYouth
-                        Actions
-                    })
-                } else {
-                    var dateFormat = new Date(goodSamaritan.BirthDate);
-                    var nameLink = `<a href="${hostUrl}good-samaritan/${goodSamaritan.id}">${goodSamaritan.names}</a>`;
-                    var Actions = '<button type="button" onclick="goodSamaritanForm(' + goodSamaritan.id + ')" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> Edit</button>'
-                    allGoodSamaritans.push({
-                        // names: goodSamaritan.names,
-                        names: nameLink,
-                        phoneNumber: goodSamaritan.phoneNumber,
-                        BirthDate: dateFormat.toLocaleDateString("en-GB"),
-                        age: `${goodSamaritan.age} Years Old`,
-                        // placeOfResidence: goodSamaritan.placeOfResidence,
-                        // timeOfStay: goodSamaritan.timeOfStay,
-                        // hasDependants: goodSamaritan.hasDependants, 
-                        // numberOfDependants: goodSamaritan.numberOfDependants,
-                        // hasNationalID: goodSamaritan.hasNationalID,
-                        // NIN: goodSamaritan.NIN,
-                        // youthHoodBusiness: goodSamaritan.youthHoodBusiness,
-                        // getsGrant: goodSamaritan.getsGrant,
-                        // forHowLong: goodSamaritan.forHowLong,
-                        // howMuch: goodSamaritan.howMuch,
-                        // howItHelpedYou: goodSamaritan.howItHelpedYou,
-                        // BenefitsFromGoodSamaritan: goodSamaritan.BenefitsFromGoodSamaritan,
-                        // grant: goodSamaritan.grant.GrantName,
-                        // howDoYouSurvive: goodSamaritan.howDoYouSurvive,
-                        // placeOfWorship: goodSamaritan.placeOfWorship,
-                        // yourNeedFromGovtAsAGrand: goodSamaritan.yourNeedFromGovtAsAGrand,
-                        // adviseToTheYouth: goodSamaritan.adviseToTheYouth
-                        Actions
-                    })
-                }
-            // })
+            var dateFormat = new Date(goodSamaritan.BirthDate);
+            var nameLink = `<a href="${hostUrl}good-samaritan/${goodSamaritan.id}">${goodSamaritan.names}</a>`;
+            var Actions = '<button type="button" onclick="goodSamaritanForm(' + goodSamaritan.id + ')" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> Edit</button>'
+            allGoodSamaritans.push({
+                // names: goodSamaritan.names,
+                names: nameLink,
+                phoneNumber: goodSamaritan.phoneNumber,
+                BirthDate: dateFormat.toLocaleDateString("en-GB"),
+                age: `${goodSamaritan.age} Years Old`,
+                // placeOfResidence: goodSamaritan.placeOfResidence,
+                // timeOfStay: goodSamaritan.timeOfStay,
+                // hasDependants: goodSamaritan.hasDependants, 
+                // numberOfDependants: goodSamaritan.numberOfDependants,
+                // hasNationalID: goodSamaritan.hasNationalID,
+                // NIN: goodSamaritan.NIN,
+                // youthHoodBusiness: goodSamaritan.youthHoodBusiness,
+                // getsGrant: goodSamaritan.getsGrant,
+                // forHowLong: goodSamaritan.forHowLong,
+                // howMuch: goodSamaritan.howMuch,
+                // howItHelpedYou: goodSamaritan.howItHelpedYou,
+                // BenefitsFromGoodSamaritan: goodSamaritan.BenefitsFromGoodSamaritan,
+                // grant: goodSamaritan.grant.GrantName,
+                // howDoYouSurvive: goodSamaritan.howDoYouSurvive,
+                // placeOfWorship: goodSamaritan.placeOfWorship,
+                // yourNeedFromGovtAsAGrand: goodSamaritan.yourNeedFromGovtAsAGrand,
+                // adviseToTheYouth: goodSamaritan.adviseToTheYouth
+                Actions
+            })
         }
 
         const dataSet = allGoodSamaritans.map(({

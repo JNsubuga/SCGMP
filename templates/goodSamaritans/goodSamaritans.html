@@ -427,7 +427,7 @@
                         ></div>
                         <div class="col-sm-6">
                           <!-- text input -->
-                          <div class="form-group d-flex mt-2 text-center">
+                          <div class="form-group d-flex mt-2 pr-2">
                             <label>Grant:</label>
                             <select
                               id="search-grant-name-id"
@@ -436,8 +436,8 @@
                               <option value="">--SELECT GRANT--</option>
                               {% for grant in grants %}
                               <option value="{{ grant.id }}">
-                                {{ grant.GrantName }} {% comment %}( {{
-                                grant.GrantAbriviation }} ) {% endcomment %}
+                                {{ grant.GrantName }} ( {{
+                                grant.GrantAbriviation }} )
                               </option>
                               {% endfor %}
                             </select>
