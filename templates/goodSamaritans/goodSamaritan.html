@@ -1,0 +1,229 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SCGMP | Good Samaritan</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- DataTables -->
+    <link
+      rel="stylesheet"
+      href="{% static 'plugins/datatables-bs4/css/dataTables.bootstrap4.min.css'%}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'plugins/datatables-responsive/css/responsive.bootstrap4.min.css'%}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'plugins/datatables-buttons/css/buttons.bootstrap4.min.css'%}"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="{% static 'plugins/fontawesome-free/css/all.min.css' %}"
+    />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'dist/css/custom.css' %}" />
+  </head>
+  <body class="hold-transition sidebar-mini layout-navbar-fixed">
+    <div class="wrapper">
+      <!-- Navbar -->
+      <!-- ========== Nav ==============-->
+      {% include 'parts/navbar.html' %}
+      <!--========== Nav ==============-->
+      <!-- ========== Aside ==============-->
+      {% include 'parts/sidemenu.html' %}
+      <!--========== Aside ==============-->
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <div class="text-right pr-2 pt-2">
+          <a
+            href="{% url 'good_samaritans' %}"
+            class="btn btn-default btn-sm ml-auto"
+          >
+            <i class="fa fa-arrow-left"></i> Good Samaritan List
+          </a>
+        </div>
+
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-12">
+                <h1 class="m-0 text-center">
+                  <b> ST. STEPHEN'S CHURCH OF UGANDA MPERERWE PARISH </b>
+                </h1>
+                <h2 class="text-center"><b>GOOD SAMARITAN</b></h2>
+              </div>
+              <div class="col-sm-12" id="registered-date"></div>
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <!--..spinner starts -->
+                  <div class="spinner-container" id="spinner-container">
+                    <div class="spinner-overlay">
+                      <div class="spin"></div>
+                    </div>
+                  </div>
+                  <!--..spinner ends -->
+                  <div class="card-header d-flex">
+                    <div class="card-title text-l text-center col-sm-12">
+                      <u>
+                        <b>Questionnaire for the Elderly People (65 yrs+)</b>
+                      </u>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div
+                      class="row mb-2 border-bottom border-solid border-default"
+                    >
+                      <div class="col-sm-6" id="erinnya-lyo"></div>
+                      <div class="col-sm-6" id="no-yessimu"></div>
+                    </div>
+                    <div
+                      class="row mb-2 border-bottom border-solid border-default"
+                    >
+                      <div class="col-sm-6" id="wazaalibwa-ddi"></div>
+                      <div class="col-sm-6" id="emyaka"></div>
+                    </div>
+                    <div
+                      class="row mb-2 border-bottom border-solid border-default"
+                    >
+                      <div class="col-sm-12" id="obeera-wa"></div>
+                    </div>
+                    <div
+                      class="row mb-2 border-bottom border-solid border-default"
+                    >
+                      <div
+                        class="col-sm-12"
+                        id="mukitundu-kino-omazeemu-banga-ki"
+                      ></div>
+                    </div>
+                    <div
+                      class="row mb-2 border-bottom border-solid border-default"
+                    >
+                      <div class="col-sm-6" id="wazaala-abaana"></div>
+                      <div class="col-sm-6" id="bameka"></div>
+                    </div>
+                    <div
+                      class="row mb-2 border-bottom border-solid border-default"
+                    >
+                      <div class="col-sm-6" id="olina-ndaga-muntu"></div>
+                      <div class="col-sm-6" id="nin-number"></div>
+                    </div>
+                    <div
+                      class="row mb-2 border-bottom border-solid border-default"
+                    >
+                      <div
+                        class="col-sm-12"
+                        id="mu-biseera-byo-ebyobuvubuka-wakolanga-mulimu-ki"
+                      ></div>
+                    </div>
+                    <div
+                      class="row mb-2 border-bottom border-solid border-default"
+                    >
+                      <div
+                        class="col-sm-6"
+                        id="ofuna-ssente-za-gavumenti"
+                      ></div>
+                      <div class="col-sm-6" id="ozifunidde-banga-ki"></div>
+                    </div>
+                    <div
+                      class="row mb-2 border-bottom border-solid border-default"
+                    >
+                      <div class="col-sm-6" id="ofuna-meka"></div>
+                      <div class="col-sm-6" id="zikuyamba-zitya"></div>
+                    </div>
+                    <div
+                      class="row mb-2 border-bottom border-solid border-default"
+                    >
+                      <div
+                        class="col-sm-12"
+                        id="ekibiina-kya-good-samaritan-okiganyudwamu-ki"
+                      ></div>
+                    </div>
+                    <div
+                      class="row mb-2 border-bottom border-solid border-default"
+                    >
+                      <div
+                        class="col-sm-12"
+                        id="ku-buyambi-bwa-sente-government-bweewa-ziriwa-zewali-ofunyeko"
+                      ></div>
+                    </div>
+                    <div
+                      class="row mb-2 border-bottom border-solid border-default"
+                    >
+                      <div class="col-sm-6" id="webezaawo-otya"></div>
+                      <div
+                        class="col-sm-6"
+                        id="osinzizaawa-mukama-katonda-wo"
+                      ></div>
+                    </div>
+                    <div
+                      class="row mb-2 border-bottom border-solid border-default"
+                    >
+                      <div
+                        class="col-sm-12"
+                        id="kintu-ki-government-kyewandyagade-ekukolere-nga-omukadde"
+                      ></div>
+                    </div>
+                    <div
+                      class="row mb-2 border-bottom border-solid border-default"
+                    >
+                      <div
+                        class="col-sm-12"
+                        id="magezi-ki-gowa-abavubuka-okwetegekera-obukadde"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+      {% include 'parts/footer.html' %}
+
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+      <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="{% static 'plugins/jszip/jszip.min.js' %}"></script>
+    <script src="{% static 'plugins/pdfmake/pdfmake.min.js' %}"></script>
+    <script src="{% static 'plugins/pdfmake/vfs_fonts.js' %}"></script>
+    <!-- AdminLTE App -->
+    <script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+    <!-- Page specific script-->
+    <script src="{% static 'api/goodSamaritans/goodSamaritan.js' %}"></script>
+  </body>
+</html>
