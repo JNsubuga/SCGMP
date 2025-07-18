@@ -296,8 +296,7 @@
                         <label>Grant:</label>
                         <select
                           id="grant-name-id"
-                          class="form-control form-control-sm rounded-0"
-                        >
+                          class="form-control form-control-sm rounded-0">
                           <option value="">--SELECT GRANT--</option>
                           {% for grant in grants %}
                           <option value="{{ grant.id }}">
@@ -423,8 +422,10 @@
                       <div class="row">
                         <div
                           class="custom-control custom-checkbox col-sm-6 text-center pt-xl-2"
-                          id="search-gets-grant-div"
-                        ></div>
+                          id="search-gets-grant-div">
+                      
+                        <input class="custom-control-input" type="checkbox" id="search-gets-grant-input"><label for="search-gets-grant-input" class="custom-control-label">Those Who Get Grants</label>
+                      </div>
                         <div class="col-sm-6">
                           <!-- text input -->
                           <div class="form-group d-flex mt-2 pr-2">

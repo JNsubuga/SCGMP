@@ -2,18 +2,35 @@ var protocol = window.location.protocol
 var hostUrl = protocol + "//" + window.location.host + "/"
 
 $(() => {
+    ///////////////////////
     goodSamaritans();
+    ///////////////////////////////////////////////////
+    $("#search-grant-name-id").prop("disabled", true);
+    /////////////////////////////////////////////////
+    $('#search-gets-grant-input').change(function () {
+        if (this.checked) {
+            $("#search-grant-name-id").prop("disabled", false);
+        } else {
+            $("#search-grant-name-id").prop("disabled", true);
+        }
+        goodSamaritans();
+    });
+    /////////////////
+    $("#search-grant-name-id").change(function () {
+        goodSamaritans();
+    });
+
 })
 
 const goodSamaritans = () => {
     $('#spinner-container').show();
     var auth_user_token = $('#auth-user-token').val();
     var auth_user_id = $('#auth-usser-id').val();
-    $("#search-gets-grant-div").html('<input class="custom-control-input" type="checkbox" id="search-gets-grant-input"><label for="search-gets-grant-input" class="custom-control-label">Those Who Get Grants</label>');
-    var url = `${hostUrl}api/en/scgmp/good-samaritans/`
-    let getsGrant = $("#search-gets-grant-input").val()
+    let getsGrant = $("#search-gets-grant-input").is(':checked');
     let grantNameId = $("#search-grant-name-id").val()
-
+    console.log("HasGrant: " + getsGrant + " grantNameId: " + grantNameId);
+    //////////////////////////////////////////////////////////////////
+    var url = `${hostUrl}api/en/scgmp/good-samaritans/?getsGrant=${getsGrant}&grantNameId=${grantNameId}`
     $.ajax({
         "url": url,
         "method": "GET",
@@ -27,7 +44,7 @@ const goodSamaritans = () => {
     }).done((response) => {
         $('#spinner-container').hide();
         var allGoodSamaritans = [];
-        for(let i=0; i < response.length; i++) {
+        for (let i = 0; i < response.length; i++) {
             var goodSamaritan = response[i];
             var dateFormat = new Date(goodSamaritan.BirthDate);
             var nameLink = `<a href="${hostUrl}good-samaritan/${goodSamaritan.id}">${goodSamaritan.names}</a>`;
@@ -83,29 +100,29 @@ const goodSamaritans = () => {
             // adviseToTheYouth
             Actions
         }) => [
-            names,
-            phoneNumber,
-            BirthDate,
-            age,
-            // placeOfResidence,
-            // timeOfStay,
-            // hasDependants, 
-            // numberOfDependants,
-            // hasNationalID,
-            // NIN,
-            // youthHoodBusiness,
-            // getsGrant,
-            // forHowLong,
-            // howMuch,
-            // howItHelpedYou,
-            // BenefitsFromGoodSamaritan,
-            // grant,
-            // howDoYouSurvive,
-            // placeOfWorship,
-            // yourNeedFromGovtAsAGrand,
-            // adviseToTheYouth
-            Actions
-        ])
+                names,
+                phoneNumber,
+                BirthDate,
+                age,
+                // placeOfResidence,
+                // timeOfStay,
+                // hasDependants, 
+                // numberOfDependants,
+                // hasNationalID,
+                // NIN,
+                // youthHoodBusiness,
+                // getsGrant,
+                // forHowLong,
+                // howMuch,
+                // howItHelpedYou,
+                // BenefitsFromGoodSamaritan,
+                // grant,
+                // howDoYouSurvive,
+                // placeOfWorship,
+                // yourNeedFromGovtAsAGrand,
+                // adviseToTheYouth
+                Actions
+            ])
 
         $("#goodSamaritan-data-table").DataTable({
             data: dataSet,
@@ -115,17 +132,17 @@ const goodSamaritans = () => {
             bDestroy: true,
             buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
             columns: [
-                {title: "Names", width:"40%"},
-                {title: "Phone Contact"},
-                {title: "Date of Birth"},
-                {title: "Age"},
-                {title: "Action(s)", className:"dt-center"}
+                { title: "Names", width: "40%" },
+                { title: "Phone Contact" },
+                { title: "Date of Birth" },
+                { title: "Age" },
+                { title: "Action(s)", className: "dt-center" }
             ]
         })
-        .buttons()
-        .container()
-        .appendTo('#goodSamaritan-data-table_wrapper .col-md-6:eq(0)')
-    })   
+            .buttons()
+            .container()
+            .appendTo('#goodSamaritan-data-table_wrapper .col-md-6:eq(0)')
+    })
 }
 
 const resetForm = () => {
@@ -157,8 +174,8 @@ const goodSamaritanForm = (goodSamaritanid = null) => {
     $("#form-alert").hide();
     var auth_user_token = $("#auth-user-token").val();
     var csrftoken = document.querySelector('#good-samaritan-form [name=csrfmiddlewaretoken]').value;
-    
-    if(goodSamaritanid != null){
+
+    if (goodSamaritanid != null) {
         $("#spinner-container-init-edit").show();
         $("#selected-good-samaritan-id").val(goodSamaritanid);
         $(".modal-title").html("Edit Record");
@@ -195,14 +212,14 @@ const goodSamaritanForm = (goodSamaritanid = null) => {
             $("#how-much").val(response.howMuch);
             $("#how-it-helped-you").val(response.howItHelpedYou);
             $("#gd-samaritan-benefits").val(response.BenefitsFromGoodSamaritan),
-            $("#grant-name-id").val(response.grant.id);
+                $("#grant-name-id").val(response.grant.id);
             $("#how-do-you-survive").val(response.howDoYouSurvive);
             $("#place-of-worship").val(response.placeOfWorship);
             $("#your-need-from-govt-as-a-grand").val(response.yourNeedFromGovtAsAGrand);
             $("#advise-to-the-youth").val(response.adviseToTheYouth);
             $("#is-disabled").val(response.is_disabled).prop('checked', response.is_disabled);
         });
-    }else{
+    } else {
         resetForm();
         var goodSamaritanid = "null";
         $("#selected-good-samaritan-id").val(goodSamaritanid);
@@ -245,15 +262,15 @@ const saveData = () => {
         "is_disabled": $("#is-disabled").is(":checked"),
     });
     // console.log(data);
-    if(goodSamaritanid != 'null'){
+    if (goodSamaritanid != 'null') {
         $.ajax({
-            "url": `${ hostUrl }api/en/scgmp/update/goodsamaritan/${ goodSamaritanid }`,
+            "url": `${hostUrl}api/en/scgmp/update/goodsamaritan/${goodSamaritanid}`,
             "method": "PUT",
             "headers": {
                 "Authorization": `Token ${auth_user_token}`,
                 "X-CSRFToken": csrftoken,
                 "Content-Type": "application/json"
-            }, 
+            },
             onerror: (error) => {
                 $("#spinner-container").hide();
                 console.log(error.responseText);
@@ -261,7 +278,7 @@ const saveData = () => {
             "data": data
         }).done((response) => {
             console.log(response)
-            if(response.status){
+            if (response.status) {
                 $("#form-alert").show();
                 $("#form-alert").html('<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-check"></i> Success!</h5>' + response.message + '</div>');
                 setTimeout(() => {
@@ -275,7 +292,7 @@ const saveData = () => {
     } else {
         // console.log(data.BirthDate)
         $.ajax({
-            "url": `${ hostUrl }api/en/scgmp/create/goodsamaritan/`,
+            "url": `${hostUrl}api/en/scgmp/create/goodsamaritan/`,
             "method": "POST",
             "headers": {
                 "Authorization": `Token ${auth_user_token}`,
@@ -289,7 +306,7 @@ const saveData = () => {
             "data": data
         }).done((response) => {
             console.log(response)
-            if(response.status){
+            if (response.status) {
                 $("#form-alert").show();
                 $("#form-alert").html('<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-check"></i> Success!</h5>' + response.message + '</div>');
                 setTimeout(() => {
