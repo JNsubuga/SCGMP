@@ -75,7 +75,6 @@ const goodSamaritans = () => {
                 Actions
             })
         }
-
         const dataSet = allGoodSamaritans.map(({
             names,
             phoneNumber,
