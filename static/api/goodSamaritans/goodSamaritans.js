@@ -52,6 +52,7 @@ const goodSamaritans = () => {
             allGoodSamaritans.push({
                 // names: goodSamaritan.names,
                 names: nameLink,
+                NIN: goodSamaritan.NIN,
                 phoneNumber: goodSamaritan.phoneNumber,
                 BirthDate: dateFormat.toLocaleDateString("en-GB"),
                 age: `${goodSamaritan.age} Years Old`,
@@ -60,7 +61,6 @@ const goodSamaritans = () => {
                 // hasDependants: goodSamaritan.hasDependants, 
                 // numberOfDependants: goodSamaritan.numberOfDependants,
                 // hasNationalID: goodSamaritan.hasNationalID,
-                // NIN: goodSamaritan.NIN,
                 // youthHoodBusiness: goodSamaritan.youthHoodBusiness,
                 // getsGrant: goodSamaritan.getsGrant,
                 // forHowLong: goodSamaritan.forHowLong,
@@ -76,7 +76,8 @@ const goodSamaritans = () => {
             })
         }
         const dataSet = allGoodSamaritans.map(({
-            names,
+            names, 
+            NIN,
             phoneNumber,
             BirthDate,
             age,
@@ -85,7 +86,6 @@ const goodSamaritans = () => {
             // hasDependants, 
             // numberOfDependants,
             // hasNationalID,
-            // NIN,
             // youthHoodBusiness,
             // getsGrant,
             // forHowLong,
@@ -100,6 +100,7 @@ const goodSamaritans = () => {
             Actions
         }) => [
                 names,
+                NIN,
                 phoneNumber,
                 BirthDate,
                 age,
@@ -108,7 +109,6 @@ const goodSamaritans = () => {
                 // hasDependants, 
                 // numberOfDependants,
                 // hasNationalID,
-                // NIN,
                 // youthHoodBusiness,
                 // getsGrant,
                 // forHowLong,
@@ -131,7 +131,8 @@ const goodSamaritans = () => {
             bDestroy: true,
             buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
             columns: [
-                { title: "Names", width: "40%" },
+                { title: "Names", width: "20%" },
+                { title: "National Id Number" },
                 { title: "Phone Contact" },
                 { title: "Date of Birth" },
                 { title: "Age" },
