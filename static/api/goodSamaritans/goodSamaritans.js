@@ -28,7 +28,7 @@ const goodSamaritans = () => {
     var auth_user_id = $('#auth-usser-id').val();
     let getsGrant = $("#search-gets-grant-input").is(':checked');
     let grantNameId = $("#search-grant-name-id").val()
-    console.log("HasGrant: " + getsGrant + " grantNameId: " + grantNameId);
+    // console.log("HasGrant: " + getsGrant + " grantNameId: " + grantNameId);
     //////////////////////////////////////////////////////////////////
     var url = `${hostUrl}api/en/scgmp/good-samaritans/?getsGrant=${getsGrant}&grantNameId=${grantNameId}`
     $.ajax({

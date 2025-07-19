@@ -72,74 +72,6 @@ class GoodSamaritans:
             results.append(goodSamaritan_item)
         return results
 
-    # def getAllGrantGoodSamaritans(self, request, lang):
-    #     results = []
-    #     goodSamaritans = GoodSamaritan.objects.filter(Q(is_disabled=False) & Q(getsGrant=True)).order_by("id")
-    #     for goodSamaritan in goodSamaritans:
-    #         goodSamaritan_item = {
-    #             "id": goodSamaritan.pk,
-    #             "names": goodSamaritan.names,
-    #             "phoneNumber": goodSamaritan.phoneNumber,
-    #             "BirthDate": goodSamaritan.BirthDate,
-    #             "age": self.calculate_age(request, goodSamaritan.BirthDate),
-    #             "placeOfResidence": goodSamaritan.placeOfResidence,
-    #             "timeOfStay": goodSamaritan.timeOfStay,
-    #             "hasDependants": goodSamaritan.hasDependants,
-    #             "numberOfDependants": goodSamaritan.numberOfDependants,
-    #             "hasNationalID": goodSamaritan.hasNationalID,
-    #             "NIN": goodSamaritan.NIN,
-    #             "youthHoodBusiness": goodSamaritan.youthHoodBusiness,
-    #             "getsGrant": goodSamaritan.getsGrant,
-    #             "forHowLong": goodSamaritan.forHowLong,
-    #             "howMuch": goodSamaritan.howMuch,
-    #             "howItHelpedYou": goodSamaritan.howItHelpedYou,
-    #             "BenefitsFromGoodSamaritan": goodSamaritan.BenefitsFromGoodSamaritan,
-    #             "grant": self.grants.getGrantById(request, lang, goodSamaritan.grant.pk),
-    #             "howDoYouSurvive": goodSamaritan.howDoYouSurvive,
-    #             "placeOfWorship": goodSamaritan.placeOfWorship,
-    #             "yourNeedFromGovtAsAGrand": goodSamaritan.yourNeedFromGovtAsAGrand,
-    #             "adviseToTheYouth": goodSamaritan.adviseToTheYouth,
-    #             "submitted_by":  self.users.getAuthUserById(request, lang, goodSamaritan.submitted_by.pk),
-    #             "is_disabled": goodSamaritan.is_disabled,
-    #             "created": goodSamaritan.created
-    #         }
-    #         results.append(goodSamaritan_item)
-    #     return results
-
-    # def getAllGrantGoodSamaritansNGrantType(self, request, lang, grantId):
-    #     results = []
-    #     goodSamaritans = GoodSamaritan.objects.filter(Q(is_disabled=False) & Q(getsGrant=True) & Q(grant=grantId)).order_by("id")
-    #     for goodSamaritan in goodSamaritans:
-    #         goodSamaritan_item = {
-    #             "id": goodSamaritan.pk,
-    #             "names": goodSamaritan.names,
-    #             "phoneNumber": goodSamaritan.phoneNumber,
-    #             "BirthDate": goodSamaritan.BirthDate,
-    #             "age": self.calculate_age(request, goodSamaritan.BirthDate),
-    #             "placeOfResidence": goodSamaritan.placeOfResidence,
-    #             "timeOfStay": goodSamaritan.timeOfStay,
-    #             "hasDependants": goodSamaritan.hasDependants,
-    #             "numberOfDependants": goodSamaritan.numberOfDependants,
-    #             "hasNationalID": goodSamaritan.hasNationalID,
-    #             "NIN": goodSamaritan.NIN,
-    #             "youthHoodBusiness": goodSamaritan.youthHoodBusiness,
-    #             "getsGrant": goodSamaritan.getsGrant,
-    #             "forHowLong": goodSamaritan.forHowLong,
-    #             "howMuch": goodSamaritan.howMuch,
-    #             "howItHelpedYou": goodSamaritan.howItHelpedYou,
-    #             "BenefitsFromGoodSamaritan": goodSamaritan.BenefitsFromGoodSamaritan,
-    #             "grant": self.grants.getGrantById(request, lang, goodSamaritan.grant.pk),
-    #             "howDoYouSurvive": goodSamaritan.howDoYouSurvive,
-    #             "placeOfWorship": goodSamaritan.placeOfWorship,
-    #             "yourNeedFromGovtAsAGrand": goodSamaritan.yourNeedFromGovtAsAGrand,
-    #             "adviseToTheYouth": goodSamaritan.adviseToTheYouth,
-    #             "submitted_by":  self.users.getAuthUserById(request, lang, goodSamaritan.submitted_by.pk),
-    #             "is_disabled": goodSamaritan.is_disabled,
-    #             "created": goodSamaritan.created
-    #         }
-    #         results.append(goodSamaritan_item)
-    #     return results
-
     def GoodSamaritanExists(self, request, lang, goodSamaritanid):
         return GoodSamaritan.objects.filter(pk=int(goodSamaritanid)).exists()
 
@@ -189,10 +121,10 @@ class GoodSamaritans:
             youthHoodBusiness=data["youthHoodBusiness"],
             getsGrant=data["getsGrant"],
             forHowLong=data["forHowLong"],
-            howMuch=data["howMuch"],
+            howMuch= 0 if data["howMuch"] == '' else data["howMuch"],
             howItHelpedYou=data["howItHelpedYou"],
             BenefitsFromGoodSamaritan=data["BenefitsFromGoodSamaritan"],
-            grant=Grant(pk=data["grant"]),
+            grant= Grant(7) if data["grant"] == None else Grant(pk=data["grant"]),
             howDoYouSurvive=data["howDoYouSurvive"],
             placeOfWorship=data["placeOfWorship"],
             yourNeedFromGovtAsAGrand=data["yourNeedFromGovtAsAGrand"],

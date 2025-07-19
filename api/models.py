@@ -213,10 +213,10 @@ class GoodSamaritan(models.Model):
     ################################################## Donations
     getsGrant = models.BooleanField(default=False)
     forHowLong = models.CharField(max_length=64, null=True, blank=True)
-    howMuch = models.FloatField(null=True, blank=True)
+    howMuch = models.FloatField(default=0)
     howItHelpedYou = models.TextField(null=True, blank=True)
     BenefitsFromGoodSamaritan = models.TextField(null=True, blank=True)
-    grant = models.ForeignKey(Grant, on_delete=models.CASCADE, null=True, blank=True)
+    grant = models.ForeignKey(Grant, on_delete=models.CASCADE, default=1)
     howDoYouSurvive = models.TextField()
     placeOfWorship = models.CharField(max_length=64)
     yourNeedFromGovtAsAGrand = models.TextField(blank=True, null=True)

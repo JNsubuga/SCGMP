@@ -41,29 +41,6 @@ class getAllGoodSamaritans(APIView):
             request, lang, getsGrant, grantNameId
         )
         return Response(response)
-
-
-# class getAllGrantGoodSamaritans(APIView):
-#     authentication_classes = [SessionAuthentication, TokenAuthentication]
-#     permission_classes = [IsAuthenticated]
-#     http_method_names = ["get"]
-
-#     def get(self, request, lang):
-#         lang = DEFAULT_LANG if None else lang
-#         response = _goodSamaritan.getAllGrantGoodSamaritans(request, lang)
-#         return Response(response)
-
-# class getAllGrantGoodSamaritansNGrantType(APIView):
-#     authentication_classes = [SessionAuthentication, TokenAuthentication]
-#     permission_classes = [IsAuthenticated]
-#     http_method_names = ["get"]
-
-#     def get(self, request, lang, grantId):
-#         lang = DEFAULT_LANG if None else lang
-#         response = _goodSamaritan.getAllGrantGoodSamaritansNGrantType(request, lang, grantId)
-#         return Response(response)
-
-
 class getGoodSamaritanById(APIView):
     authentication_classes = [SessionAuthentication, TokenAuthentication]
     permission_classes = [IsAuthenticated]
