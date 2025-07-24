@@ -129,7 +129,7 @@ const goodSamaritans = () => {
             lengthChange: false,
             autoWidth: false,
             bDestroy: true,
-            buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
+            buttons: ["copy", "excel", "pdf", "print", "colvis"],
             columns: [
                 { title: "Names", width: "20%" },
                 { title: "National Id Number" },
